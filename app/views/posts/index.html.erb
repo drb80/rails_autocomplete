@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<%= form_with url: search_posts_path, method: :get do |form| %>
+  <%= form.search_field :title_search, value: params[:title_search], oninput: "this.form.requestSubmit()" %>
+<% end %>
+
+<%= render "search_results", posts: @posts %>
+<div id="search_results"></div>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_post_path %>
