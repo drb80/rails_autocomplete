@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: redirect("/posts")
   resources :posts do
     collection do
-      get :search
+      post :search
     end
   end
 end
