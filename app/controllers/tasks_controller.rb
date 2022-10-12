@@ -3,7 +3,12 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    # @tasks = Task.where('title LIKE ?', "%#{params[:query]}%")
+    @tasks = if params[:query].present?
+               Task.where('title LIKE ?', "%#{params[:query]}%")
+             else
+               Task.all
+             end
   end
 
   # GET /tasks/1 or /tasks/1.json
