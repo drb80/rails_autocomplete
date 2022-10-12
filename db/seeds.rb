@@ -7,4 +7,5 @@
 #   Character.create(name: "Luke", movie: movies.first)
 100.times do
   Post.create!(title: Faker::Movie.unique.title)
+  Task.create!(title: Faker::Name.unique.name)
 end
