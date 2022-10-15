@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def search
     @posts = Post.where('title LIKE ?', "%#{params[:title_search]}%")
     respond_to do |format|
-      format.html do
+      format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update("search_results",
             partial: "posts/search_results",
